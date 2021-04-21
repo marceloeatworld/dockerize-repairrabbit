@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  app:
+    restart: unless-stopped
+    container_name: repairrabbit_app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    links:
+      - db
+    environment:
+      - APP_ENV=production
+    volumes:
+      - ./storage/app/public:/var/www/storage/app/public
+      - ./storage/app/public:/var/www/public/storage
+      - ./.env:/var/www/.env
+    ports:
+      - $APP_PORT:9000
+      - $NGINX_PORT:80
+  db:
+    restart: unless-stopped
+    container_name: repairrabbit_db
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_USER=$MYSQL_USER
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - "$DB_PORT:3306"
