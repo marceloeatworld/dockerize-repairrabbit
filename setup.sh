@@ -18,7 +18,7 @@ read newappPort
 [ -n "$newappPort" ] && appPort=$newappPort
 echo "\n"
 
-dbPort=33061
+dbPort=3306
 echo "Which port should be used for DATABASE server?"
 echo "  - $dbPort"
 echo "DB_PORT : [$dbPort] \c"
