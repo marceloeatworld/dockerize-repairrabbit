@@ -1,6 +1,8 @@
 # Dockerize RepairRabbit
 
 ### Prerequisites
+- PHP 7.2 
+- COMPOSER 1.9.0
 - docker >= 18.03.0 - [installation guide](https://docs.docker.com/engine/install/)
 
 - docker-compose >= 1.18.0 - [installation guide](https://docs.docker.com/compose/install/)
